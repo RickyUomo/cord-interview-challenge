@@ -1,0 +1,50 @@
+$breakpoint-tablet: 900px;
+
+
+form{
+    display: grid;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+label{
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+input{
+    font-size: 1.5rem;
+    padding: 1rem 1rem;
+    line-height: 1.2rem;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 0.8rem;
+}
+
+button{
+    background-color: #696969;
+    color:white;
+    border-radius: 15px;
+    padding: 1rem 1rem;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 250ms;
+    font-size: 1.1rem;
+    
+    &:hover{
+        background-color:rgba(0,0,0,0.85);
+    }
+}
+
+@media (min-width: $breakpoint-tablet){
+    form{
+        grid-template-columns: auto 1fr 1fr auto;
+        grid-gap: 1rem;
+        align-items: center;
+    }
+
+    input{
+        margin-bottom: 0;
+    }
+}

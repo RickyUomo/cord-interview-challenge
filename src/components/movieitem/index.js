@@ -1,0 +1,50 @@
+import React from "react";
+import styled from 'styled-components';
+import '../../css/item.scss'
+
+export default class MovieItem extends React.Component {
+
+  render() {
+    const { movies, genres } = this.props;
+
+    return (
+      // Complete the MovieItem component
+      <MovieItemWrapper>
+
+        <LeftCont>
+          {/* map movies here */}
+
+          {movies.map(movie =>
+            <div className="leftItem" key={movie.id}>
+              <h3>{movie.title}</h3>
+              <img className="movieImg" src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`} />
+            </div>
+          )}
+        </LeftCont>
+
+        <RightCont>
+          {/* map genres list here */}
+
+        </RightCont>
+      </MovieItemWrapper>
+    )
+  }
+}
+
+const MovieItemWrapper = styled.div`
+  position: relative;
+  background-color: white;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-evenly;
+`
+
+const LeftCont = styled.div`
+  display: inline-block;
+  background-color: white;
+
+`
+
+const RightCont = styled.div`
+  display: inline-block;
+`
