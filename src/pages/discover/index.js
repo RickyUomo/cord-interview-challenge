@@ -8,7 +8,7 @@ import SearchFilters from "../../components/searchfilter";
 import MovieList from "../../components/movielist";
 
 export default class Discover extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -42,33 +42,45 @@ export default class Discover extends React.Component {
 
   // Write a function to trigger the API request and load the search results 
   // based on the keyword and year given as parameters
-  searchMovies(keyword, year){
+  searchMovies(keyword, year) {
     // feed keyword and year into api call
     fetcher.getMovies(keyword, year)
-    .then(res => this.setState({results: res}))
+      .then(res => {
+        this.setState({ results: res })
+      })
   }
 
+  // componentDidMount() {
+  //   this.setState({ totalCount: parseInt(this.state.results.length) })
+  //   console.log(typeof(this.state.results.length))
+  // }
 
-  
-  render () {
+
+
+  render() {
     const { genreOptions, languageOptions, ratingOptions, totalCount, results } = this.state;
 
+    
+    // console.log(this.state.totalCount)
     console.log(this.state.results)
+
 
     return (
       <DiscoverWrapper>
         <MobilePageTitle>Discover</MobilePageTitle> {/* MobilePageTitle should become visible on small screens & mobile devices*/}
         <MovieFilters>
-          <SearchFilters 
-            genres={genreOptions} 
-            ratings={ratingOptions}  
+          <SearchFilters
+            genres={genreOptions}
+            ratings={ratingOptions}
             languages={languageOptions}
             searchMovies={(keyword, year) => this.searchMovies(keyword, year)}
           />
         </MovieFilters>
+
         <MovieResults>
-          { totalCount > 0 && <TotalCounter>{totalCount} results</TotalCounter>}
-          <MovieList 
+          {totalCount > 0 && <TotalCounter>{totalCount} results</TotalCounter>}
+          {totalCount}
+          <MovieList
             movies={results || []}
             genres={genreOptions || []}
           />

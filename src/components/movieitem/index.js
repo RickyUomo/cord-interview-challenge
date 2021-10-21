@@ -16,15 +16,17 @@ export default class MovieItem extends React.Component {
 
           {movies.map(movie =>
             <div className="leftItem" key={movie.id}>
-              <h3>{movie.title}</h3>
               <img className="movieImg" src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`} />
+              <h3>{movie.title}</h3>
+              <p><small>RELEASE DATE: {movie.release_date}</small></p>
+              <p>{movie.overview}</p>
             </div>
           )}
         </LeftCont>
 
         <RightCont>
           {/* map genres list here */}
-
+            {}
         </RightCont>
       </MovieItemWrapper>
     )
