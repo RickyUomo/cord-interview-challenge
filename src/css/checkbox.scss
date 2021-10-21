@@ -2,19 +2,16 @@ $breakpoint-tablet: 900px;
 $breakpoint-mobile: 480px;
 
 .checkItem{
-    margin-right: 0.8rem;
+    margin-right: 3rem;
     margin-bottom: 0.8rem;
 }
 
-.checkGenre{
+.checkContainer{
     display: grid;
     grid-template-columns: auto auto auto;
-    
-}
 
-.checkLang, .checkRating{
-    @media (max-width:$breakpoint-tablet){
-        display: flex;
+    @media(max-width:$breakpoint-tablet){
+        grid-template-columns: auto auto;   
     }
 }
 

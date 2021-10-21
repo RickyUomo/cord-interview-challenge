@@ -6,6 +6,8 @@ import ExpandableFilter from "../../components/expandablefilter";
 import SearchBar from "../../components/searchbar";
 
 export default class SearchFilters extends React.Component {
+
+
   render () {
     const { genres, ratings, languages, searchMovies } = this.props;
 

@@ -29,6 +29,7 @@ export default function SearchBar(props) {
                     <input
                         className="searchInput"
                         type="text"
+                        placeholder="Harry Potter"
                         onChange={keywordHandler}
                         value={keyword}
                     />
@@ -38,6 +39,7 @@ export default function SearchBar(props) {
                     <input
                         className="searchInput"
                         type="number"
+                        placeholder="Year"
                         onChange={yearHandler}
                         value={year}
                     />

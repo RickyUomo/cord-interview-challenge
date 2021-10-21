@@ -40,16 +40,11 @@ export default class Discover extends React.Component {
   componentDidMount() {
     let genresAry = []
     fetcher.preloadMovies()
-      .then(res => {
-
-        this.setState({ results: res, totalCount: res.length, genreOptions: genresAry })
-      })
+      .then(res => this.setState({ results: res, totalCount: res.length, genreOptions: genresAry }))
 
     fetcher.getGenres()
-      .then(res => {
-        this.setState({genreOptions: res})
-      })
-      
+      .then(res => this.setState({ genreOptions: res }))
+
   }
 
   // Write a function to trigger the API request and load the search results 
@@ -64,7 +59,7 @@ export default class Discover extends React.Component {
 
   render() {
     const { genreOptions, languageOptions, ratingOptions, totalCount, results } = this.state;
-    
+
     return (
       <DiscoverWrapper>
         <MobilePageTitle>Discover</MobilePageTitle> {/* MobilePageTitle should become visible on small screens & mobile devices*/}
