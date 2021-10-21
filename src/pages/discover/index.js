@@ -37,7 +37,14 @@ export default class Discover extends React.Component {
   }
 
   // Write a function to preload the popular movies when page loads & get the movie genres
-  // componentsMount, Didmount
+  // componentDidmount
+  componentDidMount() {
+    fetcher.preloadMovies()
+      .then(res =>
+        this.setState({ results: res, totalCount: res.length })
+      )
+  }
+
 
 
   // Write a function to trigger the API request and load the search results 
@@ -45,29 +52,22 @@ export default class Discover extends React.Component {
   searchMovies(keyword, year) {
     // feed keyword and year into api call
     fetcher.getMovies(keyword, year)
-      .then(res => {
-        this.setState({ results: res })
-      })
-  }
+      .then(res => 
 
-  // componentDidMount() {
-  //   this.setState({ totalCount: parseInt(this.state.results.length) })
-  //   console.log(typeof(this.state.results.length))
-  // }
+        this.setState({ results: res, totalCount: res.length })
+
+      )
+  }
 
 
 
   render() {
     const { genreOptions, languageOptions, ratingOptions, totalCount, results } = this.state;
 
-    
-    // console.log(this.state.totalCount)
-    console.log(this.state.results)
-
-
     return (
       <DiscoverWrapper>
         <MobilePageTitle>Discover</MobilePageTitle> {/* MobilePageTitle should become visible on small screens & mobile devices*/}
+        
         <MovieFilters>
           <SearchFilters
             genres={genreOptions}
@@ -79,7 +79,6 @@ export default class Discover extends React.Component {
 
         <MovieResults>
           {totalCount > 0 && <TotalCounter>{totalCount} results</TotalCounter>}
-          {totalCount}
           <MovieList
             movies={results || []}
             genres={genreOptions || []}

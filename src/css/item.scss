@@ -1,10 +1,22 @@
 .leftItem{
     display: flex;
     flex-direction: column;
+    padding: 2rem 4rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    margin-bottom: 1.5rem;
 }
 
 .movieImg{
-    height: 210px;
-    width: 230px;
-    text-align: center;
+    margin: 0 auto;
+}
+
+.movieTitle{
+    font-size: 1.8rem;
+    margin-bottom: 0;
+}
+
+.movieRelease{
+    margin-bottom: 0;
+    font-size: 0.8rem;
 }

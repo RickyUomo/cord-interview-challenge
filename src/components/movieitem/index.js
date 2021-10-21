@@ -17,8 +17,8 @@ export default class MovieItem extends React.Component {
           {movies.map(movie =>
             <div className="leftItem" key={movie.id}>
               <img className="movieImg" src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`} />
-              <h3>{movie.title}</h3>
-              <p><small>RELEASE DATE: {movie.release_date}</small></p>
+              <h3 className="movieTitle">{movie.title}</h3>
+              <p className="movieRelease">RELEASE DATE: {movie.release_date}</p>
               <p>{movie.overview}</p>
             </div>
           )}
@@ -39,6 +39,7 @@ const MovieItemWrapper = styled.div`
   border-radius: 3px;
   display: flex;
   justify-content: space-evenly;
+  margin-top: 2rem;
 `
 
 const LeftCont = styled.div`

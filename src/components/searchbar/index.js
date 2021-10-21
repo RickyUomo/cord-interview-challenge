@@ -22,20 +22,27 @@ export default function SearchBar(props) {
 
     return (
         <FormWrapper>
+
             <form>
-                <label>Search</label>
-                <input
-                    type="text"
-                    placeholder="i.e. Harry Poter"
-                    onChange={keywordHandler}
-                    value={keyword}
-                />
-                <input
-                    type="number"
-                    placeholder="Year"
-                    onChange={yearHandler}
-                    value={year}
-                />
+                <div className="searchWrapper">
+                    <img className="searchIcon" src={SearchIcon} />
+                    <input
+                        type="text"
+                        placeholder="i.e. Harry Poter"
+                        onChange={keywordHandler}
+                        value={keyword}
+                    />
+                </div>
+                <div className="searchWrapper">
+                    <img className="searchIcon" src={CalendarIcon} />
+                    <input
+                        type="number"
+                        placeholder="Year"
+                        onChange={yearHandler}
+                        value={year}
+                    />
+                </div>
+
                 <button
                     type="submit"
                     onClick={handleSubmit}
