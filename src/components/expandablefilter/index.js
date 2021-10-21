@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Checkbox from "../checkbox";
 
 export default class ExpandableFilter extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -13,4 +13,13 @@ export default class ExpandableFilter extends React.Component {
   }
 
   // You need to create your own checkbox component with a custom checkmark
+  render() {
+    const {genres, ratings, languages} = this.props
+
+    return (
+      <>
+        <Checkbox genres={genres} ratings={ratings} languages={languages} />
+      </>
+    )
+  }
 }

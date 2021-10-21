@@ -1,0 +1,22 @@
+$breakpoint-tablet: 900px;
+$breakpoint-mobile: 480px;
+
+.checkItem{
+    margin-right: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.checkGenre{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
+}
+
+.checkLang, .checkRating{
+    @media (max-width:$breakpoint-tablet){
+        display: flex;
+    }
+}
+
+
+// media query chekboxes should display horizontally

@@ -1,4 +1,5 @@
 $breakpoint-tablet: 900px;
+$breakpoint-mobile: 480px;
 
 form{
     display: grid;
@@ -14,11 +15,11 @@ form{
 
 .searchIcon{
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 10px;
 }
 
-input{
+.searchInput{
     font-size: 1.5rem;
     padding: 0.5rem 0.8rem;
     border-radius: 15px;

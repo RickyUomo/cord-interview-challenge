@@ -16,7 +16,7 @@ export default class Discover extends React.Component {
       year: 0,
       results: [],
       totalCount: 0,
-      genreOptions: [],
+      genreOptions: [], // genreOptions is also array of object
       ratingOptions: [
         { id: 7.5, name: 7.5 },
         { id: 8, name: 8 },
@@ -37,37 +37,38 @@ export default class Discover extends React.Component {
   }
 
   // Write a function to preload the popular movies when page loads & get the movie genres
-  // componentDidmount
   componentDidMount() {
+    let genresAry = []
     fetcher.preloadMovies()
-      .then(res =>
-        this.setState({ results: res, totalCount: res.length })
-      )
+      .then(res => {
+
+        this.setState({ results: res, totalCount: res.length, genreOptions: genresAry })
+      })
+
+    fetcher.getGenres()
+      .then(res => {
+        this.setState({genreOptions: res})
+      })
+      
   }
-
-
 
   // Write a function to trigger the API request and load the search results 
   // based on the keyword and year given as parameters
   searchMovies(keyword, year) {
     // feed keyword and year into api call
     fetcher.getMovies(keyword, year)
-      .then(res => 
-
-        this.setState({ results: res, totalCount: res.length })
-
-      )
+      .then(res => this.setState({ results: res, totalCount: res.length }))
   }
 
 
 
   render() {
     const { genreOptions, languageOptions, ratingOptions, totalCount, results } = this.state;
-
+    
     return (
       <DiscoverWrapper>
         <MobilePageTitle>Discover</MobilePageTitle> {/* MobilePageTitle should become visible on small screens & mobile devices*/}
-        
+
         <MovieFilters>
           <SearchFilters
             genres={genreOptions}
@@ -95,10 +96,12 @@ const DiscoverWrapper = styled.main`
 
 const TotalCounter = styled.div`
   font-weight: 900;
+  font-size: 1.5rem;
+  ${'' /* margin: 0 auto; */}
 `
 
 const MovieResults = styled.div`
-
+  margin-top: 2rem;
 `
 
 const MovieFilters = styled.div`

@@ -27,8 +27,8 @@ export default function SearchBar(props) {
                 <div className="searchWrapper">
                     <img className="searchIcon" src={SearchIcon} />
                     <input
+                        className="searchInput"
                         type="text"
-                        placeholder="i.e. Harry Poter"
                         onChange={keywordHandler}
                         value={keyword}
                     />
@@ -36,8 +36,8 @@ export default function SearchBar(props) {
                 <div className="searchWrapper">
                     <img className="searchIcon" src={CalendarIcon} />
                     <input
+                        className="searchInput"
                         type="number"
-                        placeholder="Year"
                         onChange={yearHandler}
                         value={year}
                     />

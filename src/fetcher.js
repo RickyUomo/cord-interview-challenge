@@ -14,9 +14,13 @@ export const getMovies = async (keyword = "Harry", year) => {
 export const preloadMovies = async () => {
     const response = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US`)
         .then(res => {
-            console.log(res.data.results)
             return res.data.results
         })
     return response
 }
 
+export const getGenres = async () => {
+    const response = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)
+        .then(res => res.data.genres)
+    return response
+}
