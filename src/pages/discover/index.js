@@ -38,8 +38,8 @@ export default class Discover extends React.Component {
   // Write a function to preload the popular movies when page loads & get the movie genres
   componentDidMount() {
     fetcher.preloadMovies()
-      .then(res => { 
-        this.setState({ results: res, totalCount: res.length }) 
+      .then(res => {
+        this.setState({ results: res, totalCount: res.length })
       })
 
 
@@ -75,11 +75,12 @@ export default class Discover extends React.Component {
         </MovieFilters>
 
         <MovieResults>
-          {totalCount > 0 && <TotalCounter>{totalCount} results</TotalCounter>}
-          <MovieList
-            movies={results || []}
-            genres={genreOptions || []}
-          />
+      {totalCount > 0?<TotalCounter>{totalCount} results</TotalCounter>:
+        <TotalCounter>0 results</TotalCounter>}
+        <MovieList
+        movies={results ||[]}
+        genres={genreOptions ||[]}
+        />
         </MovieResults>
       </DiscoverWrapper>
     )

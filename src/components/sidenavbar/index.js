@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from 'styled-components';
 import { NavLink as Link } from "react-router-dom";
 import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
 
 import '../../css/sidenavbar.scss'
@@ -16,7 +17,7 @@ export default class SideNavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isOpen: false,
+      isOpen: true
     }
   }
 
@@ -30,16 +31,27 @@ export default class SideNavBar extends React.Component {
 
     return (
       <>
-        <IconContext.Provider value={{color:'white'}}>
-          <div className="navBar">
-            <Link to="#" className="menu-bars" >
+        <IconContext.Provider value={{ color: 'white' }}>
+          <Nav>
+            <NavHambuger to="#">
               <FaIcons.FaBars onClick={() => this.openSidebar()} />
-            </Link>
-          </div>
-
-          <SideNavBarCont className={isOpen ? 'visible' : 'hidden'}>
+            </NavHambuger>
+            <h1
+              style={{
+                textAlign: "center",
+                marginLeft: "200px",
+                color: "white"
+              }}
+            >
+              Movie Search
+            </h1>
+          </Nav>
+          <SideNavBarCont isOpen={isOpen}>
 
             {/* Implement a hamburger icon slide in effect for small devices */}
+            <NavHambuger to="#">
+              <AiIcons.AiOutlineClose onClick={() => this.openSidebar()} />
+            </NavHambuger>
             <SideNavMainLink className="menu_nav_link main_nav_link" to="/" exact>
               Wesley
               <NavIcon>
@@ -49,7 +61,9 @@ export default class SideNavBar extends React.Component {
 
             <SideNavMainLink className="menu_nav_link" to="/discover">
               Discover
-              <NavIcon search></NavIcon>
+              <NavIcon>
+                <img src={SearchWhite} />
+              </NavIcon>
             </SideNavMainLink>
 
             <SideNavHeader><HeaderText>Watched</HeaderText></SideNavHeader>
@@ -70,14 +84,16 @@ export default class SideNavBar extends React.Component {
 // text hover use ${colors.sideNavBarHover}; 
 
 const SideNavBarCont = styled.div`
-  position: fixed;
   z-index: 9;
-  width: 280px;
+  width: 200px;
   height: 100%;
   background-color: ${colors.sideNavBar};
   display:flex;
   flex-direction: column;
-  margin-top: 0;
+  position: fixed;
+  top: 0;
+  left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
+  transition: 400ms;
 `
 
 const SideNavMainLink = styled(Link)`
@@ -87,26 +103,54 @@ const SideNavMainLink = styled(Link)`
   font-size: 1.6em;
   font-weight: 700;
   color: white;
+  text-align: center;
+
+  &:hover{
+    color: #DFDFDF;
+  }
 `
 
 const NavIcon = styled.div`
   position: absolute;
-  right: 35px;
-  top: 50%;
+  left: 6%;
+  top: 30%;
   
 `
 
 const SideNavHeader = styled.div`
-
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 0.7rem;
 `
 
 const HeaderText = styled.div`
 
-  &:hiver{
-    text: ${colors.sideNavBarHover};
-  }
 `
 
 const NavLink = styled(Link)`
   display: block;
+  color: white;
+  text-align: center;
+  margin-top: 0.3rem;
+
+  &:hover{
+    color: #DFDFDF;
+  }
 `
+
+const Nav = styled.div`
+  background-color: ${colors.sideNavBar};
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const NavHambuger = styled(Link)`
+  margin-left: 2rem;
+  font-size: 2rem;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
