@@ -1,0 +1,28 @@
+.movieItem {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  margin-top: 1.2rem;
+  margin-bottom: 1.5rem;
+  margin-left: 1rem;
+  text-align: center; }
+
+.movieImg {
+  margin: 0 auto;
+  width: 200px;
+  height: 300px;
+  object-fit: cover; }
+
+.movieTitle {
+  font-size: 1.8rem;
+  margin-bottom: 0; }
+
+.movieRelease {
+  font-size: 0.8rem; }
+
+.movieOverview {
+  margin: 0 auto;
+  max-width: 500px;
+  line-height: 1.5rem; }

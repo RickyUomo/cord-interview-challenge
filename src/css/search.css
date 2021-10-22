@@ -1,0 +1,31 @@
+form {
+  display: grid;
+  box-sizing: border-box;
+  width: 100%; }
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  min-width: 100px; }
+
+.searchIcon {
+  position: absolute;
+  top: 20%;
+  left: 10px; }
+
+.searchInput {
+  font-size: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  width: 80%; }
+
+@media (min-width: 900px) {
+  form {
+    grid-template-columns: 1fr 1fr auto;
+    grid-gap: 0.5rem;
+    align-items: center; }
+  input {
+    margin-bottom: 0; } }

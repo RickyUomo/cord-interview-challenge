@@ -1,0 +1,11 @@
+.visible {
+  visibility: visible; }
+
+.hidden {
+  visibility: hidden; }
+
+.navBar {
+  background-color: #001e2d;
+  font-size: 2rem;
+  padding: 1.3rem;
+  width: 238px; }

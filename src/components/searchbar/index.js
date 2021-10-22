@@ -1,24 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import '../../css/search.scss';
+import Debounce from './Debounce'
 
 import * as colors from "../../colors";
 import SearchIcon from "../../images/search-icon-yellow.png";
 import CalendarIcon from "../../images/year-icon.png";
 
+
 export default function SearchBar(props) {
 
-    const [keyword, setKeyword] = useState('')
-    const [year, setYear] = useState('')
+    const [search, setSearch] = useState({
+        keyword: '', year: ''
+    })
 
-    const keywordHandler = e => setKeyword(e.target.value)
+    const debouncedSearchTerm = Debounce(search.keyword, 500);
+    const debouncedSearchTermYear = Debounce(search.year, 500);
 
-    const yearHandler = e => setYear(e.target.value)
+    // to make search immediately with 500 ms debounce
+    useEffect(
+        () => {
+            if (debouncedSearchTerm || debouncedSearchTermYear) {
+                props.searchMovies(search.keyword, search.year)
+            }
+        }, [debouncedSearchTerm, debouncedSearchTermYear])
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        props.searchMovies(keyword, year)
+    const onType = e => {
+        const { value, name } = e.target
+
+        setSearch({
+            ...search,
+            [name]: value
+        })
     }
+
 
     return (
         <FormWrapper>
@@ -29,9 +44,10 @@ export default function SearchBar(props) {
                     <input
                         className="searchInput"
                         type="text"
+                        name="keyword"
                         placeholder="Harry Potter"
-                        onChange={keywordHandler}
-                        value={keyword}
+                        onChange={onType}
+                        value={search.keyword}
                     />
                 </div>
                 <div className="searchWrapper">
@@ -39,18 +55,12 @@ export default function SearchBar(props) {
                     <input
                         className="searchInput"
                         type="number"
+                        name="year"
                         placeholder="Year"
-                        onChange={yearHandler}
-                        value={year}
+                        onChange={onType}
+                        value={search.year}
                     />
                 </div>
-
-                <button
-                    type="submit"
-                    onClick={handleSubmit}
-                >
-                    submit
-                </button>
             </form>
         </FormWrapper>
     )

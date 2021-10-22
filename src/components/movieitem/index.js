@@ -35,13 +35,11 @@ export default class MovieItem extends React.Component {
 
 const MovieItemWrapper = styled.div`
   position: relative;
-  ${'' /* background-color: white; */}
+  background-color: white;
   border-radius: 3px;
   display: flex;
-
   justify-content: space-around;
   margin-top: 2rem;
-  padding: 1rem 2rem; 
 `
 
 const LeftCont = styled.div`

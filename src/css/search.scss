@@ -29,20 +29,6 @@ form{
     width: 80%;
 }
 
-button{
-    background-color: #696969;
-    color:white;
-    border-radius: 15px;
-    padding: 0.5rem 0.8rem;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    transition: background-color 250ms;
-    font-size: 1.1rem;
-    
-    &:hover{
-        background-color:rgba(0,0,0,0.85);
-    }
-}
 
 @media (min-width: $breakpoint-tablet){
     form{

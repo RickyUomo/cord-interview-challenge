@@ -1,0 +1,10 @@
+.checkItem {
+  margin-right: 3rem;
+  margin-bottom: 0.8rem; }
+
+.checkContainer {
+  display: grid;
+  grid-template-columns: auto auto auto; }
+  @media (max-width: 900px) {
+    .checkContainer {
+      grid-template-columns: auto auto; } }

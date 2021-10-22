@@ -1,0 +1,8 @@
+.collapase.show {
+  display: block; }
+
+.collapase.hide {
+  display: none; }
+
+.filterIcon {
+  cursor: pointer; }

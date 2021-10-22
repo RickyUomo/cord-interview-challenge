@@ -33,14 +33,15 @@ export default class Discover extends React.Component {
       ]
     };
 
-    this.searchMovies = this.searchMovies.bind(this)
   }
 
   // Write a function to preload the popular movies when page loads & get the movie genres
   componentDidMount() {
-    let genresAry = []
     fetcher.preloadMovies()
-      .then(res => this.setState({ results: res, totalCount: res.length, genreOptions: genresAry }))
+      .then(res => { 
+        this.setState({ results: res, totalCount: res.length }) 
+      })
+
 
     fetcher.getGenres()
       .then(res => this.setState({ genreOptions: res }))
