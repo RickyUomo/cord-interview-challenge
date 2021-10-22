@@ -11,7 +11,6 @@ export default class MovieItem extends React.Component {
       // Complete the MovieItem component
       <MovieItemWrapper className="wrapper">
 
-
         <LeftCont >
           {movies.map(movie =>
             <div className="movieItem" key={movie.id}>
@@ -23,11 +22,6 @@ export default class MovieItem extends React.Component {
           )}
         </LeftCont>
 
-        <RightCont >
-
-        </RightCont>
-
-
       </MovieItemWrapper>
     )
   }
@@ -37,15 +31,17 @@ const MovieItemWrapper = styled.div`
   position: relative;
   background-color: white;
   border-radius: 3px;
-  display: flex;
-  justify-content: space-around;
   margin-top: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 `
 
 const LeftCont = styled.div`
-  display: inline-block;
-`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
-const RightCont = styled.div`
-  display: inline-block;
+  @media(max-width: 800px){
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 `

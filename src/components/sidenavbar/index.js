@@ -128,7 +128,7 @@ const SideNavMainLink = styled(Link)`
 
 const NavIcon = styled.div`
   position: absolute;
-  left: 6%;
+  left: 10%;
   top: 30%;
 
   @media(max-width: 600px){
