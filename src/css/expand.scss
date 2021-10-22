@@ -1,3 +1,5 @@
+$breakpoint-tablet: 900px;
+
 .collapase.show{
     display: block;
 }
@@ -8,4 +10,12 @@
 
 .filterIcon{
     cursor: pointer;
+}
+
+.expandWrapper{
+
+    @media(max-width:$breakpoint-tablet){
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
 }

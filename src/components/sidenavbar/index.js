@@ -5,7 +5,6 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
 
-import '../../css/sidenavbar.scss'
 
 import * as colors from "../../colors";
 import Arrow from "../../images/arrow-icon.png";
@@ -17,17 +16,31 @@ export default class SideNavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isOpen: true
+      isOpen: true,
+      isClicked: false,
+      width: window.innerWidth
     }
+    this.updateWidth = this.updateWidth.bind(this)
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.updateWidth);
   }
 
   openSidebar() {
-    this.setState({ isOpen: !this.state.isOpen })
+    this.setState({ isOpen: !this.state.isOpen, isClicked: !this.state.isClicked })
   }
 
+  clickHamburger() {
+    this.setState({ isClicked: !this.state.isClicked })
+  }
+
+  updateWidth(){
+    this.setState({width: window.innerWidth})
+  }
 
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, isClicked, width } = this.state;
 
     return (
       <>
@@ -36,30 +49,28 @@ export default class SideNavBar extends React.Component {
             <NavHambuger to="#">
               <FaIcons.FaBars onClick={() => this.openSidebar()} />
             </NavHambuger>
-            <h1
-              style={{
-                textAlign: "center",
-                marginLeft: "200px",
-                color: "white"
-              }}
-            >
-              Movie Search
-            </h1>
           </Nav>
-          <SideNavBarCont isOpen={isOpen}>
+
+          <SideNavBarCont isOpen={isOpen} isClicked={isClicked}>
 
             {/* Implement a hamburger icon slide in effect for small devices */}
-            <NavHambuger to="#">
-              <AiIcons.AiOutlineClose onClick={() => this.openSidebar()} />
-            </NavHambuger>
-            <SideNavMainLink className="menu_nav_link main_nav_link" to="/" exact>
+            {/* show hamburger icon depend on width size */}
+            {width <= 600 ?
+              <NavHambuger to="#">
+                <AiIcons.AiOutlineClose onClick={() => this.openSidebar()} />
+              </NavHambuger>
+              :
+              ''
+            }
+
+            <SideNavMainLink onClick={() => this.clickHamburger()} className="menu_nav_link main_nav_link" to="/" exact>
               Wesley
               <NavIcon>
                 <img src={Arrow} />
               </NavIcon>
             </SideNavMainLink>
 
-            <SideNavMainLink className="menu_nav_link" to="/discover">
+            <SideNavMainLink onClick={() => this.clickHamburger()} className="menu_nav_link" to="/discover">
               Discover
               <NavIcon>
                 <img src={SearchWhite} />
@@ -67,12 +78,12 @@ export default class SideNavBar extends React.Component {
             </SideNavMainLink>
 
             <SideNavHeader><HeaderText>Watched</HeaderText></SideNavHeader>
-            <NavLink className="menu_nav_link" to="/watched/movies">Movies</NavLink>
-            <NavLink className="menu_nav_link" to="/watched/tv-shows">Tv Shows</NavLink>
+            <NavLink onClick={() => this.clickHamburger()} className="menu_nav_link" to="/watched/movies">Movies</NavLink>
+            <NavLink onClick={() => this.clickHamburger()} className="menu_nav_link" to="/watched/tv-shows">Tv Shows</NavLink>
 
             <SideNavHeader><HeaderText>Saved</HeaderText></SideNavHeader>
-            <NavLink className="menu_nav_link" to="/saved/movies">Movies</NavLink>
-            <NavLink className="menu_nav_link" to="/saved/tv-shows">Tv Shows</NavLink>
+            <NavLink onClick={() => this.clickHamburger()} className="menu_nav_link" to="/saved/movies">Movies</NavLink>
+            <NavLink onClick={() => this.clickHamburger()} className="menu_nav_link" to="/saved/tv-shows">Tv Shows</NavLink>
 
           </SideNavBarCont>
         </IconContext.Provider>
@@ -85,7 +96,7 @@ export default class SideNavBar extends React.Component {
 
 const SideNavBarCont = styled.div`
   z-index: 9;
-  width: 200px;
+  width: 250px;
   height: 100%;
   background-color: ${colors.sideNavBar};
   display:flex;
@@ -94,6 +105,11 @@ const SideNavBarCont = styled.div`
   top: 0;
   left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
   transition: 400ms;
+
+  @media(max-width: 600px){
+    width: 100%;
+    left: ${({ isClicked }) => (isClicked ? "-100%" : "0")};
+  }
 `
 
 const SideNavMainLink = styled(Link)`
@@ -114,6 +130,10 @@ const NavIcon = styled.div`
   position: absolute;
   left: 6%;
   top: 30%;
+
+  @media(max-width: 600px){
+    left: 20%;
+  }
   
 `
 
@@ -139,11 +159,19 @@ const NavLink = styled(Link)`
 `
 
 const Nav = styled.div`
+  position: fixed;
+  top: 0;
+  width: 250px;
+  z-index: 9;
   background-color: ${colors.sideNavBar};
   height: 80px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  @media (max-width: 600px){
+    width: 100%;
+  }
 `;
 
 const NavHambuger = styled(Link)`

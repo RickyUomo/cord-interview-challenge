@@ -5,6 +5,11 @@
 .checkContainer {
   display: grid;
   grid-template-columns: auto auto auto; }
-  @media (max-width: 900px) {
-    .checkContainer {
-      grid-template-columns: auto auto; } }
+
+@media (max-width: 900px) {
+  .checkContainer {
+    grid-template-columns: auto auto; } }
+
+@media (max-width: 900px) {
+  .checkLabel {
+    padding: 1rem; } }

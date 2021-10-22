@@ -20,11 +20,9 @@ export default class ExpandableFilter extends React.Component {
   render() {
     const { genres, ratings, languages } = this.props
     const { filtersShown } = this.state
-    // console.log(filtersShown)
 
     return (
-      <ExpandWrapper>
-        <div>
+      <div className="expandWrapper">
 
           <img className="filterIcon" onClick={() => this.setState({ filtersShown: !filtersShown })} src={FilterIcon} />
 
@@ -33,13 +31,11 @@ export default class ExpandableFilter extends React.Component {
             <Checkbox title={"RATING"} filter={ratings} />
             <Checkbox title={"LANGUAGES"} filter={languages} />
           </div>
-        </div>
-      </ExpandWrapper>
+
+      </div>
     )
   }
 }
 
-const ExpandWrapper = styled.div`
-  display: flex;
-`;
+
 

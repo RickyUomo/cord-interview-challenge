@@ -94,6 +94,7 @@ const DiscoverWrapper = styled.main`
 const TotalCounter = styled.div`
   font-weight: 900;
   font-size: 1.5rem;
+  padding-left: 1.5rem;
   ${'' /* margin: 0 auto; */}
 `
 
@@ -106,5 +107,14 @@ const MovieFilters = styled.div`
 `
 
 const MobilePageTitle = styled.header`
+  visibility: hidden;
+  font-size: 1.8rem;
+  font-weight: 800;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
 
+  @media (max-width: 600px){
+    visibility: visible;
+    margin-top: 2.5rem;
+  }
 `

@@ -15,5 +15,9 @@ $breakpoint-mobile: 480px;
     }
 }
 
+.checkLabel{
 
-// media query chekboxes should display horizontally
+    @media(max-width:$breakpoint-tablet){
+        padding: 1rem;
+    }
+}
