@@ -12,8 +12,7 @@ export default class MovieItem extends React.Component {
       <MovieItemWrapper className="wrapper">
 
         <LeftCont >
-        {/* filter no images movie */}
-          {movies.filter(movie => movie.poster_path).map(movie =>
+          {movies.map(movie =>
             <div className="movieItem" key={movie.id}>
               <img className="movieImg" src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`} />
               <h3 className="movieTitle">{movie.title}</h3>
