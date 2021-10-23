@@ -9,7 +9,6 @@ export const getMovies = async (keyword = "Harry", year) => {
     // await for http get response
     const response = await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${keyword}&primary_release_year=${year}`)
         .then(res => res.data.results)
-        
     return response
 }
 

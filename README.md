@@ -1,21 +1,26 @@
-# cord Coding Challenge (Front-end)
+# Movie Search, CORD Challenge
 
-### Introduction 
-Welcome! This coding challenge is designed to explore your React & SCSS frontend skills. You will have to create a simple SPA based off the provided mockup and make a few API calls to a public web API.
+### Overview 
+The main functionality of the app is to search movies on [theMovieDB]. Before searching the movies, it will preload the popular movies. I uploaded the challenge app on [Heroku].
 
-### The challenge
-You have to complete the test and write any necessary code so that the discover page looks like this [mockup] designs. All the images/icons you need are already imported and you can find them under the images folder. 
+### API documentation
+Need to replace your own API_KEY if anyone wants to implement it.
+In fetcher.js, there are three API calls, 
+- **search movies**: implemented debounce function which can limit the API calls. It will request the API call after 500ms once user finishes typing.
+- **preaload movies**
+- **get movie genres**
 
-The discover page should enable the user to search for movies as keywords are typed into the search bar. Functionality for filtering does not need to be implemented, however the filter categories should still be expandable/collapsable upon clicking. On mobile devices, the navigation bar should slide in from left to right when the user clicks on the hamburger icon, and back when the user clicks on a close icon or outside the SideBar. In addition, you have to add all the responsive stylesheets for the app to run smoothly on mobile devices.
-
-Movie data can be queried via: 
-- [theMovieDB]
+### Personal Details
+- **Name**: Meng Ju Kuo
+- **Email**: rickykuo925@gmail.com
+- **Mobile**: (+44)759-6055650
 
 Packages & Technologies used in the repo:
 - `axios`
 - `node-sass`
 - `react-router-dom`
 - `styled-components`
+- `react-icons`
 
 ### Submission guide
 Please fork this repo and drop your contact person a note once you are done
@@ -33,5 +38,5 @@ Please fork this repo and drop your contact person a note once you are done
 - **Production-readiness** - Is there proper error handling? Is the code ready to put into production? Code-Splitting?
 - **Future-readiness** - React Hooks? Web workers? PWA? Client-side caching?
 
-[mockup]: <https://cord-coding-challenges.s3-eu-west-1.amazonaws.com/frontend-test-mockups.zip>
 [theMovieDB]: <https://www.themoviedb.org/documentation/api>
+[Heroku]: <https://cord-movie-search.herokuapp.com/discover>
