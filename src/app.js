@@ -5,23 +5,26 @@ import styled from 'styled-components';
 import SideNavBar from "./components/sidenavbar";
 import Discover from "./pages/discover";
 
-import './css/app.scss'; 
+import './css/app.scss';
 
 export default class App extends React.Component {
-  render () {
+  render() {
     return (
-      <Router>
-        <PageContainer>
-          <SideNavBar {...this.props} />
+      // <Router>
+      //   <PageContainer>
+      //     <SideNavBar {...this.props} />
 
-          <ContentWrapper>
-            <Switch>
-              <Route path="/discover" component={Discover} {...this.props}/>
-            </Switch>
-          </ContentWrapper>
-          
-        </PageContainer>
-      </Router>
+      //     <ContentWrapper>
+      //       <Switch>
+      //         <Route path="/discover" component={Discover} {...this.props}/>
+      //       </Switch>
+      //     </ContentWrapper>
+
+      //   </PageContainer>
+      // </Router>
+      <>
+        <Discover />
+      </>
     );
   }
 }
